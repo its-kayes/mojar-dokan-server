@@ -18,7 +18,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run () {
     try {
         await client.connect();
-        let vegetablesDb = client.db('mojarVejetables').collection('vegetables');
+        let vegetablesDb = client.db('mojarVegetables').collection('vegetables');
 
 
         app.get('/vegetables', async(req, res) => {
@@ -34,6 +34,7 @@ async function run () {
 } 
 
 
+run().catch(console.dir);
 
 
 app.get('/', (req, res) => {
