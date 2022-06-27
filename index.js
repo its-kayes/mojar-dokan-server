@@ -18,6 +18,13 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run () {
     try {
         await client.connect();
+        let vegetablesDb = client.db('mojarVejetables').collection('vegetables');
+
+
+        app.get('/vegetables', async(req, res) => {
+            let data = await vegetablesDb.find().toArray();
+            res.send(data);
+        })
 
 
     }
