@@ -29,9 +29,7 @@ async function run() {
   }
 }
 
-app.use(cors());
-app.use(express.json());
-
+run().catch(console.dir);
 app.get('/', (req, res) => {
   res.send('Server On Live');
 });
