@@ -19,15 +19,23 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     await client.connect();
-    let vegetablesDb = client.db('mojarVejetables').collection('vegetables');
+    let vegetablesDb = client.db('mojarVegetables').collection('vegetables');
+    let fruitsDb = client.db('mojarFruits').collection('fruits');
 
     app.get('/vegetables', async (req, res) => {
       let data = await vegetablesDb.find().toArray();
       res.send(data);
     });
+
+    app.get('/fruits', async (reg, res) => {
+      let fruitsData = await fruitsDb.find().toArray();
+      res.send(fruitsData);
+    });
   } finally {
   }
 }
+
+run().catch(console.dir);
 
 run().catch(console.dir);
 app.get('/', (req, res) => {
